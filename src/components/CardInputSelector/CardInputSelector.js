@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FlatList from 'flatlist-react'
-import { Card, Button, Icon } from '@material-ui/core'
+import { Grid, Card, Button, Icon } from '@material-ui/core'
 import { normalizeText } from '../../utils/normalizeText'
 import PropTypes from 'prop-types'
 
@@ -87,7 +87,13 @@ export default class CardInputSelector extends Component {
   render() {
     const { placeHolder } = this.props
     return (
-      <Button onPress={() => this.textInputRef.current.focus()}>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        onPress={() => this.textInputRef.current.focus()}
+      >
         <Card style={styles.paper}>
           <p style={styles.text}>{this.props.text}</p>
           <input
@@ -104,7 +110,7 @@ export default class CardInputSelector extends Component {
           </Button>
         </Card>
         <Card style={(styles.paper, styles.textView)}>{this.renderList()}</Card>
-      </Button>
+      </Grid>
     )
   }
 }

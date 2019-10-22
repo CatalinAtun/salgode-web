@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../redux/actions/user'
-import { Button } from '@material-ui/core'
+import { Grid, Button } from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns'
 import { DateTimePicker, MuiPickersUtilsProvider } from 'material-ui-pickers'
 import PropTypes from 'prop-types'
@@ -71,7 +71,7 @@ class CreateTripScreen extends Component {
     // const filteredSlots = spots
 
     return (
-      <div>
+      <Grid container direction="column" justify="center" alignItems="center">
         <CardInputSelector
           text="#Desde"
           placeHolder="Filtra por Comuna o Parada"
@@ -112,7 +112,7 @@ class CreateTripScreen extends Component {
         >
           <p style={styles.whiteText}>Siguiente</p>
         </Button>
-      </div>
+      </Grid>
     )
   }
 }
