@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { Text, Form, Item, Input, Button } from 'native-base'
-import Layout from '../../constants/Layout'
 import PropTypes from 'prop-types'
 
-class LoginForm extends Component {
+import Layout from '../../constants/Layout'
+
+class SignInForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,7 +67,7 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
+SignInForm.propTypes = {
   onSend: PropTypes.func.isRequired,
 }
 
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default LoginForm
+export default SignInForm
