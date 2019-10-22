@@ -32,5 +32,8 @@ module.exports = {
     }],
 		"no-var": "error",
     "eqeqeq": ["error", "smart"],
+    "no-console": 1,
+    "react/display-name": 1,
+    "react/prop-types": 1
 	}
 };
