@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
+import './Navbar.sass'
 
 import AppBar from '@material-ui/core/AppBar'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
@@ -8,6 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Fab from '@material-ui/core/Fab'
+import Grid from '@material-ui/core/Grid'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import IconButton from '@material-ui/core/IconButton'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
@@ -17,7 +19,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import Zoom from '@material-ui/core/Zoom'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -41,6 +42,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    color: '#0000ff',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -49,6 +51,9 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginRight: drawerWidth,
+  },
+  AppName: {
+    flexGrow: 1,
   },
   hide: {
     display: 'none',
@@ -208,19 +213,35 @@ export default function Navbar(props) {
           })}
         >
           <Toolbar>
-            <Typography variant="h6" style={{ flex: 1 }}>
-              Scroll to see button
-            </Typography>
-            <div>
-              <IconButton
-                edge="end"
-                className={clsx(classes.menuButton, open && classes.hide)}
-                onClick={handleDrawerOpen}
-                color="inherit"
-                aria-label="menu"
+            <div className={classes.AppName}>
+              <Grid
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="center"
               >
-                <MenuIcon />
-              </IconButton>
+                <Grid item xs={1} sm={1}></Grid>
+                <Grid item xs={3} sm={3}>
+                  <div className="logo-image">
+                    <img
+                      id="navbar-image"
+                      className="navbar-image"
+                      src={process.env.PUBLIC_URL + '/images/Logo_blanco.png'}
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={1} sm={1}>
+                  <IconButton
+                    edge="end"
+                    className={clsx(classes.menuButton, open && classes.hide)}
+                    onClick={handleDrawerOpen}
+                    color="inherit"
+                    aria-label="menu"
+                  >
+                    <MenuIcon className="icon-color" />
+                  </IconButton>
+                </Grid>
+              </Grid>
             </div>
           </Toolbar>
         </AppBar>
