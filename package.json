@@ -1,0 +1,89 @@
+{
+  "name": "salgode-web",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=12.9",
+    "yarn": "^1.17.3"
+  },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "dev": "node scripts/start.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "build": "node scripts/build.js",
+    "release": "standard-version && git push --follow-tags origin master"
+  },
+  "dependencies": {
+    "camelcase": "^5.2.0",
+    "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "css-loader": "3.2.0",
+    "dotenv": "8.1.0",
+    "dotenv-expand": "5.1.0",
+    "file-loader": "4.2.0",
+    "formik": "^1.5.8",
+    "fs-extra": "8.1.0",
+    "html-webpack-plugin": "4.0.0-beta.5",
+    "identity-obj-proxy": "3.0.0",
+    "is-wsl": "^2.1.1",
+    "mini-css-extract-plugin": "0.8.0",
+    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "8.0.1",
+    "postcss-preset-env": "6.7.0",
+    "postcss-safe-parser": "4.0.1",
+    "react": "^16.9.0",
+    "react-app-polyfill": "^1.0.3",
+    "react-bodymovin": "^2.0.0",
+    "react-dev-utils": "^9.0.4",
+    "react-dom": "^16.9.0",
+    "react-lottie": "^1.2.3",
+    "react-router-dom": "^5.0.1",
+    "resolve": "1.12.0",
+    "sass-loader": "8.0.0",
+    "semver": "6.3.0",
+    "style-loader": "1.0.0",
+    "terser-webpack-plugin": "2.1.0",
+    "ts-pnp": "1.1.4",
+    "url-loader": "2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.0",
+    "@svgr/webpack": "4.3.2",
+    "@typescript-eslint/eslint-plugin": "2.3.1",
+    "@typescript-eslint/parser": "2.3.1",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "8.0.6",
+    "babel-plugin-named-asset-import": "^0.3.4",
+    "babel-preset-react-app": "^9.0.2",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-loader": "3.0.0",
+    "eslint-plugin-flowtype": "4.3.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "pnp-webpack-plugin": "1.5.0",
+    "prettier": "^1.18.2",
+    "webpack": "4.40.2",
+    "webpack-dev-server": "3.8.1",
+    "webpack-manifest-plugin": "2.1.0",
+    "workbox-webpack-plugin": "4.3.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+if: tag IS blank
+
+language: node_js
+node_js:
+  - 12.9.1
+
+branches:
+  only:
+    # - master
+    - dev
+
+cache:
+  npm: true
+  yarn: true
+  directories:
+    - node_modules
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
+  - source /home/travis/.bashrc
+
+stages:
+  - name: linter
+    if: type != push
+  # - name: deploy staging
+  #   if: branch = dev && type == push
+  # - name: deploy production
+  #   if: branch = master && type == push
+
+jobs:
+  include:
+    # Pull request
+    - stage: linter
+      install:
+        - yarn install
+      script:
+        - yarn lint
+    # # Staging
+    # - stage: deploy staging
+    #   before_deploy:
+    #     - yarn build
+    #   script: skip
+    #   deploy:
+    #     skip_cleanup: true
+    #     provider: s3
+    #     local_dir: build
+    #     access_key_id: $AWS_ACCESS_KEY
+    #     secret_access_key: $AWS_SECRET_KEY
+    #     region: $S3_BUCKET_REGION
+    #     bucket: $S3_STAGING_BUCKET_NAME
+    #     on:
+    #       branch: dev
+    # # Production
+    # - stage: deploy production
+    #   before_deploy:
+    #     - yarn build
+    #   script: skip
+    #   deploy:
+    #     skip_cleanup: true
+    #     provider: s3
+    #     local_dir: build
+    #     access_key_id: $AWS_ACCESS_KEY
+    #     secret_access_key: $AWS_SECRET_KEY
+    #     region: $S3_BUCKET_REGION
+    #     bucket: $S3_PRODUCTION_BUCKET_NAME

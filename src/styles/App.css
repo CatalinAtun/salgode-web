@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+}
+
+.container {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  font-weight: 600;
+  overflow: hidden;
+  text-transform: uppercase;
+  width: 100%;
+}
