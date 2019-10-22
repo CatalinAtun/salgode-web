@@ -34,7 +34,6 @@ class SignUpForm extends React.Component {
     this.onChangePasswordRepeat = this.onChangePasswordRepeat.bind(this)
 
     this.getValidity = this.getValidity.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
   }
 
   onChangeName({ target: { value: name } }) {
@@ -100,18 +99,8 @@ class SignUpForm extends React.Component {
     return validity && this.state.password === this.state.passwordRepeat
   }
 
-  onSubmit() {
-    this.props.onSubmit({
-      name: this.state.name,
-      lastName: this.state.lastname,
-      email: this.state.email,
-      phone: this.state.phoneNumber,
-      password: this.state.password,
-      passwordRepeat: this.state.passwordRepeat,
-    })
-  }
-
   render() {
+    const { onSubmit } = this.props
     const {
       name,
       lastname,
@@ -165,7 +154,19 @@ class SignUpForm extends React.Component {
           />
         </FormControl>
 
-        <Button disabled={!this.getValidity()} onClick={this.onSubmit}>
+        <Button
+          disabled={!this.getValidity()}
+          onClick={() =>
+            onSubmit({
+              name,
+              lastname,
+              email,
+              phoneNumber,
+              password,
+              passwordRepeat,
+            })
+          }
+        >
           Siguiente
         </Button>
       </FormControl>
