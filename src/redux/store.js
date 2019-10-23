@@ -10,7 +10,7 @@ import spotsReducer from './reducers/spots'
 import { createTripModel } from './models/createTrip'
 import { spotsModel } from './models/spots'
 import slotsReducer from './reducers/slots'
-
+import { reducer as formReducer } from 'redux-form'
 const client = axios.create({
   baseURL: 'https://7wsx5vxfbi.execute-api.us-east-1.amazonaws.com/staging',
   responseType: 'json',
@@ -23,6 +23,7 @@ const reducer = combineReducers({
   createTrip: createTripReducer,
   spots: spotsReducer,
   slots: slotsReducer,
+  form: formReducer,
   loading: false,
 })
 

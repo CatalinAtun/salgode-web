@@ -13,6 +13,8 @@ import {
   CreateTrip,
   Profile,
 } from './screens'
+
+import UpdateUser from './screens/UpdateUser'
 import Navbar from './components/Navbar/Navbar'
 
 const App = () => {
@@ -27,6 +29,7 @@ const App = () => {
             <Route exact path="/mis-viajes" component={MyTrips} />
             <Route exact path="/crear-viaje" component={CreateTrip} />
             <Route exact path="/perfil" component={Profile} />
+            <Route exact path="/perfil/editar" component={UpdateUser} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route component={NotFound} />
