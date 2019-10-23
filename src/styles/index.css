@@ -1,0 +1,4 @@
+@font-face {
+    font-family: "Kepler296";
+    src: local("Kepler296"), url(../assets/fonts/Kepler296.otf) format("opentype");
+}

@@ -4,12 +4,12 @@ import clsx from 'clsx'
 import './Navbar.sass'
 
 import AppBar from '@material-ui/core/AppBar'
+import Box from '@material-ui/core/Box'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Fab from '@material-ui/core/Fab'
-import Grid from '@material-ui/core/Grid'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import IconButton from '@material-ui/core/IconButton'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
@@ -19,6 +19,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 import Zoom from '@material-ui/core/Zoom'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -52,14 +53,11 @@ const useStyles = makeStyles(theme => ({
     }),
     marginRight: drawerWidth,
   },
-  AppName: {
+  appName: {
     flexGrow: 1,
-  },
-  hide: {
-    display: 'none',
-  },
-  menuButton: {
-    marginLeft: theme.spacing(2),
+    fontFamily: 'Kepler296',
+    color: 'white',
+    textAlign: 'center',
   },
   drawer: {
     width: drawerWidth,
@@ -74,6 +72,15 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+  },
+  hide: {
+    display: 'none',
+  },
+  menuButton: {
+    marginLeft: theme.spacing(2),
+  },
+  navbarOffset: {
+    width: theme.spacing(6),
   },
 }))
 
@@ -213,36 +220,19 @@ export default function Navbar(props) {
           })}
         >
           <Toolbar>
-            <div className={classes.AppName}>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                alignItems="center"
-              >
-                <Grid item xs={1} sm={1}></Grid>
-                <Grid item xs={3} sm={3}>
-                  <div className="logo-image">
-                    <img
-                      id="navbar-image"
-                      className="navbar-image"
-                      src={process.env.PUBLIC_URL + '/images/Logo_blanco.png'}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={1} sm={1}>
-                  <IconButton
-                    edge="end"
-                    className={clsx(classes.menuButton, open && classes.hide)}
-                    onClick={handleDrawerOpen}
-                    color="inherit"
-                    aria-label="menu"
-                  >
-                    <MenuIcon className="icon-color" />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </div>
+            <Box className={classes.navbarOffset} />
+            <Typography variant="h5" className={classes.appName}>
+              SalgoDe
+            </Typography>
+            <IconButton
+              edge="end"
+              className={clsx(classes.menuButton, open && classes.hide)}
+              onClick={handleDrawerOpen}
+              color="inherit"
+              aria-label="menu"
+            >
+              <MenuIcon className="icon-color" />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
