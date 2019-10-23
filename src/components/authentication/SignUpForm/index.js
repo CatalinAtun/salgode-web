@@ -2,8 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Components
-import { Button, FormControl, Input, InputLabel } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import TextField from '@material-ui/core/TextField'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { withStyles } from '@material-ui/core/styles'
 
+const styles = theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+})
 class SignUpForm extends React.Component {
   constructor(props) {
     super(props)
@@ -110,72 +141,134 @@ class SignUpForm extends React.Component {
       passwordRepeat,
     } = this.state
 
+    const { classes } = this.props
+
     return (
-      <FormControl>
-        <FormControl>
-          <InputLabel>Nombre</InputLabel>
-          <Input value={name} onChange={this.onChangeName} />
-        </FormControl>
+      <Container component="main">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
 
-        <FormControl>
-          <InputLabel>Apellido</InputLabel>
-          <Input value={lastname} onChange={this.onChangeLastname} />
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>Número de Teléfono</InputLabel>
-          <Input
-            type="tel"
-            value={phoneNumber}
-            onChange={this.onChangePhoneNumber}
-          />
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>E-mail</InputLabel>
-          <Input type="email" value={email} onChange={this.onChangeEmail} />
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>Contraseña</InputLabel>
-          <Input
-            type="password"
-            value={password}
-            onChange={this.onChangePassword}
-          />
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>Confirma tu contraseña</InputLabel>
-          <Input
-            type="password"
-            value={passwordRepeat}
-            onChange={this.onChangePasswordRepeat}
-          />
-        </FormControl>
-
-        <Button
-          disabled={!this.getValidity()}
-          onClick={() =>
-            onSubmit({
-              name,
-              lastname,
-              email,
-              phoneNumber,
-              password,
-              passwordRepeat,
-            })
-          }
-        >
-          Siguiente
-        </Button>
-      </FormControl>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="Nombre"
+                  autoFocus
+                  value={name}
+                  onChange={this.onChangeName}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Apellido"
+                  name="lastName"
+                  autoComplete="lname"
+                  value={lastname}
+                  onChange={this.onChangeLastname}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="E-mail"
+                  name="email"
+                  autoComplete="email"
+                  type="email"
+                  value={email}
+                  onChange={this.onChangeEmail}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  label="Número de Teléfono"
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={this.onChangePhoneNumber}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  label="Contraseña"
+                  id="password"
+                  autoComplete="current-password"
+                  type="password"
+                  value={password}
+                  onChange={this.onChangePassword}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  label="Confirma tu contraseña"
+                  id="passwordRepeat"
+                  autoComplete="current-password"
+                  type="password"
+                  value={passwordRepeat}
+                  onChange={this.onChangePasswordRepeat}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              disabled={!this.getValidity()}
+              onClick={() =>
+                onSubmit({
+                  name,
+                  lastname,
+                  email,
+                  phoneNumber,
+                  password,
+                  passwordRepeat,
+                })
+              }
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link to="/sign-in" variant="body2">
+                  ¿Ya tienes una cuenta? Ingresa
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      </Container>
     )
   }
 }
 
 SignUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-export default SignUpForm
+export default withStyles(styles)(SignUpForm)

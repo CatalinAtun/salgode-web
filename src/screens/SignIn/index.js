@@ -45,7 +45,7 @@ class SignInScreen extends React.Component {
     const { loading } = this.state
 
     return (
-      <div className="sign-up">
+      <div className="sign-in">
         <SignInForm onSubmit={this.onSubmit} />
 
         {loading && <CircularProgress />}
